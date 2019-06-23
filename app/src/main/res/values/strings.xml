@@ -1,4 +1,9 @@
 <resources>
     <string name="app_name">Books</string>
     <string name="results">Book Results</string>
+    <string name="textview_book_title">Book Title</string>
+    <string name="textview_book_author">Book Author</string>
+    <string name="textview_book_publisher">Book Publisher</string>
+    <string name="textview_published_date">Published Date</string>
+    <string name="search">Search</string>
 </resources>
