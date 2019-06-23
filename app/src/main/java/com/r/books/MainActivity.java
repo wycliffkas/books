@@ -22,6 +22,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
 
     private ProgressBar progressLoader;
     private RecyclerView booksRecyclerView;
+    private LinearLayoutManager linearLayoutManager;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -30,7 +31,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         progressLoader = findViewById(R.id.progressBar);
         booksRecyclerView = findViewById(R.id.mRecyclerView);
 
-        LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
+        linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         booksRecyclerView.setLayoutManager(linearLayoutManager);
 
@@ -99,9 +100,9 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         protected void onPostExecute(String result) {
 
             if(result == null) {
+                progressLoader.setVisibility(View.GONE);
                 Toast.makeText(MainActivity.this, "Error Loading data from Google API",
                         Toast.LENGTH_LONG).show();
-                progressLoader.setVisibility(View.GONE);
             }
             else {
                 progressLoader.setVisibility(View.GONE);
@@ -109,6 +110,7 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
                 BookAdapter adapter = new BookAdapter(books);
                 booksRecyclerView.setAdapter(adapter);
             }
+
 
         }
     }
