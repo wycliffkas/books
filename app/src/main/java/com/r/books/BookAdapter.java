@@ -1,6 +1,7 @@
 package com.r.books;
 
 import android.content.Context;
+import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -54,7 +55,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     }
 
 
-    public class BookViewHolder extends RecyclerView.ViewHolder {
+    public class BookViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
 
         TextView title;
         TextView author;
@@ -68,6 +69,18 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             author = view.findViewById(R.id.bookAuthor);
             publisher = view.findViewById(R.id.bookPublisher);
             publishedDate = view.findViewById(R.id.bookPublishedDate);
+            view.setOnClickListener(this);
+
+        }
+
+        @Override
+        public void onClick(View view) {
+            //to get the book that was clicked on
+            int position = getAdapterPosition();
+            Book selectedBook = books.get(position);
+            Intent intent = new Intent(view.getContext(), BookDetail.class);
+            intent.putExtra("Book", selectedBook);
+            view.getContext().startActivity(intent);
 
         }
     }
