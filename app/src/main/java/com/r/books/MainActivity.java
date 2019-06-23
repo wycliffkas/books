@@ -8,14 +8,10 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.ProgressBar;
 import android.widget.SearchView;
-import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.view.MenuItemCompat;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import java.io.IOException;
 import java.net.URL;
 import java.util.ArrayList;
@@ -37,7 +33,6 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         LinearLayoutManager linearLayoutManager = new LinearLayoutManager(this);
         linearLayoutManager.setOrientation(RecyclerView.VERTICAL);
         booksRecyclerView.setLayoutManager(linearLayoutManager);
-
 
 
         try {
@@ -103,22 +98,17 @@ public class MainActivity extends AppCompatActivity implements SearchView.OnQuer
         @Override
         protected void onPostExecute(String result) {
 
-
             if(result == null) {
                 Toast.makeText(MainActivity.this, "Error Loading data from Google API",
                         Toast.LENGTH_LONG).show();
                 progressLoader.setVisibility(View.GONE);
             }
             else {
-
                 progressLoader.setVisibility(View.GONE);
                 ArrayList<Book> books = ApiUtil.getBooksFromJson(result);
                 BookAdapter adapter = new BookAdapter(books);
                 booksRecyclerView.setAdapter(adapter);
-
             }
-
-
 
         }
     }
