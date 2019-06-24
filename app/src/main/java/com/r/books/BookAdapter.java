@@ -34,14 +34,6 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
         Book book = books.get(position);
         holder.title.setText(book.getTitle());
         String authors = "";
-        int i= 0;
-        for(String author : book.getAuthors()){
-            authors += author;
-            i++;
-            if(i < book.getAuthors().length){
-                authors +=", ";
-            }
-        }
         holder.author.setText(authors);
         holder.publisher.setText(book.getPublisher());
         holder.publishedDate.setText(book.getPublishedDate());
