@@ -11,5 +11,6 @@ public class BookDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.book_detail);
         Book book = getIntent().getParcelableExtra("Book");
+
     }
 }
